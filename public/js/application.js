@@ -14,4 +14,29 @@ $(function(){
         $('main').append(response);
       })
   });
+
+  // select the form and bind to the submit
+  $('main').on('submit', '#contact-form', function(event){
+    // Browser stop. Seriously don't do it.
+    event.preventDefault();
+    // pull some info from that form
+    var contact = $(this).serialize();
+    var url = $(this).attr('action');
+    var type = "POST";
+
+    // Send the request
+    $.ajax({
+      url: url,
+      type: type,
+      data: contact
+    })
+      .done(function(response){
+        // Add response to the table
+        $('tbody').append(response);
+        // git rid of the form
+        $('#contact-form').remove();
+        // show the button again
+        $('#new-contact').show();
+      })
+  });
 })

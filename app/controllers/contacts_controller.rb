@@ -34,7 +34,11 @@ end
 post '/contacts' do
   @contact = Contact.new(params[:contact])
   if @contact.save
-    redirect '/contacts'
+    if request.xhr?
+      erb :'contacts/_contact_row', layout: false, locals: {contact: @contact}
+    else
+      redirect '/contacts'
+    end
   else
     response.status = 422
     erb :'contacts/new'
