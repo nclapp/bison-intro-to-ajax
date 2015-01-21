@@ -11,7 +11,11 @@ end
 
 get '/contacts/new' do
   @contact = Contact.new(params[:contact])
-  erb :'contacts/new'
+  if request.xhr?
+    erb :'contacts/_form', layout: false
+  else
+    erb :'contacts/new'
+  end
 end
 
 get '/contacts/:id' do
