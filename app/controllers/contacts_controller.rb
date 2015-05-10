@@ -10,12 +10,19 @@ get '/contacts' do
 end
 
 get '/contacts/new' do
+  # @contact = Contact.new(params[:contact])
+  # if request.xhr?
+  #   erb :'contacts/_form', layout: false
+  # else
+  #   erb :'contacts/new'
+  # end
   @contact = Contact.new(params[:contact])
-  if request.xhr?
-    erb :'contacts/_form', layout: false
-  else
-    erb :'contacts/new'
-  end
+    if request.xhr?
+      erb :'contacts/_form', layout: false
+    else
+      erb :'contacts/new'
+    end
+  # erb :'contacts/new', layout: !request.xhr? #XML HTTP Request
 end
 
 get '/contacts/:id' do

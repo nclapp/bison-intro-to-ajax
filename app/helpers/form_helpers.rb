@@ -2,7 +2,7 @@ helpers do
 
   def form_action(contact)
     if contact.persisted?
-      "/contacts/#{contact.id}"
+      "/contact/#{contact.id}"
     else
       "/contacts"
     end

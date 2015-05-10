@@ -13,7 +13,7 @@
     </thead>
     <tbody>
       <% @contacts.each do |current_iteration_contact| %>
-        <%= erb :'contacts/_contact_row', locals: {contact: current_iteration_contact} %>
+        <%= erb :'contacts/_contact_row', locals: {contact: current_iteration_contact} %> <!-- locals stores `contact` for partial -->
       <% end %>
     </tbody>
   </table>
